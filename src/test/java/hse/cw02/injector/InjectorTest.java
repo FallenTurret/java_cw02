@@ -73,4 +73,13 @@ class TestInjector {
             Injector.initialize("hse.cw02.injector.ClassWithOneInterfaceDependency", list);
         });
     }
+
+    @Test
+    public void injectorTestDoubleLevel() throws Exception {
+        var list = new ArrayList<String>();
+        list.add("hse.cw02.injector.Interface");
+        list.add("hse.cw02.injector.InterfaceImpl");
+        list.add("hse.cw02.injector.SomeClass");
+        assertTrue(Injector.initialize("hse.cw02.injector.SomeClass", list) instanceof SomeClass);
+    }
 }
